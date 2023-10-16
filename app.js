@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv').config();//importar variables entorno
 const { mongoConn } = require('./databases/configuration');//importar cnx a bd
+const cors = require('cors');
 
 
 mongoConn();
@@ -9,6 +10,10 @@ const app = express();
 
 //middlewares
 app.use(express.json());
+app.use(cors({
+    origin: '*'
+}));
+
 
 /** Rutas */
 const test = require('./routes/test');
